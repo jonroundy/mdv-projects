@@ -5,12 +5,6 @@ var teamCount = 5;
 var turretCount = ["Top Lane 1", "Top Lane 2", "Mid Lane 1", "Mid Lane 2", "Bottom Lane 1", "Bottom Lane 2"];
 var readyToPlay = true;
 
-// Notes while I am coding
-//turretCount.push( "lane 4" ); 			//Will push lane to the next available value in my array
-//turretCount.unshift( "lane4" ); 			//Will push lane4 to the beginning of my array
-//turretCount.pop();						//Will remove what ever value is at the end of my array
-//turretCount.shift();						//Will remove what ever value is at the beg of my array
-
 var letsPlay = function(){
 	var yes = "Yes I have time to play";
 	var no = "No I do not have time to play.";
@@ -22,10 +16,8 @@ var letsPlay = function(){
 		console.log(no);
 	}
 
-}; // Procedure
+};
 letsPlay();
-
-//If we can play
 
 function startMatch(){
 	var notReady = false;
@@ -39,12 +31,12 @@ function startMatch(){
 	};
 	
 	
-}; //end startMatch - Boolean
+};
 startMatch();
 
-var turretTakeDown = function(){
+var towerTakeDown = function(){
 	for(var i = 0; i < 6; i++){
-		var turretNames = [
+		var towerNames = [
 			"Top 1",
 			"Top 2",
 			"Middle 1",
@@ -53,20 +45,40 @@ var turretTakeDown = function(){
 			"Bottom 2",
 	];
 	
-	console.log("Once match is started we need to take out turrets " + turretCount[i] )
+	console.log("Once match is started we need to take out towers " + towerNames[i] )
 	}
+	return  i
 
 
-
-}; // End of turretTakeDown array function
-
-turretTakeDown();
+};
 
 
-//console.log(turretCount[1])
+towerTakeDown();
 
-// for (var i=2; j=turretCount.length; i < 3; i++) {
-//	console.log(turretCount[i])
-//}; // This will show the values in my array until 0 is less then 3 - I can also use length if i want it to run to end or change the equation
+var lanesAttacked = function(){
+
+	var towersStanding = 6;
+	while (towersStanding > 0) {
+	console.log(towersStanding + " Towers need to be destroyed before we can rush base!");
+	towersStanding--;
+	};
+		
+	}; // End of number function
+lanesAttacked();
+
+var letsAttack = function(){
+
+var rushBase = "towers are down charge the base!";
+var atkNexus = "we are in attack the nexus!";
+var turretsAllDown = false;
+
+	if(turretsAllDown === true) {
+		 console.log("Everyone the " + rushBase + " Ok everyone " + atkNexus );
+	} else {
+		console.log("there is nothing left we can do");
+	};
+	
+}; //end of string function
+lanesAttacked();
 
 
