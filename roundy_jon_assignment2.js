@@ -27,7 +27,7 @@ letsPlay();
 
 //If we can play
 
-function startMatch(teamGathered,matchStarted){
+function startMatch(){
 	var notReady = false;
 	var otherTeamReady = true;
 	
@@ -35,15 +35,32 @@ function startMatch(teamGathered,matchStarted){
 		console.log("I will gather my team and start the match.");
 	} else {
 		console.log("We need all members to start the match.");
+		
 	};
 	
 	
-}; //end startMatch
-
+}; //end startMatch - Boolean
 startMatch();
 
+var turretTakeDown = function(){
+	for(var i = 0; i < 6; i++){
+		var turretNames = [
+			"Top 1",
+			"Top 2",
+			"Middle 1",
+			"Middle 2",
+			"Bottom 1",
+			"Bottom 2",
+	];
+	
+	console.log("Once match is started we need to take out turrets " + turretCount[i] )
+	}
 
 
+
+}; // End of turretTakeDown array function
+
+turretTakeDown();
 
 
 //console.log(turretCount[1])
