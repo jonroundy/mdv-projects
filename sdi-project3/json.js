@@ -31,31 +31,25 @@ for (var key in opponent.members){
 	//friend.name // or age or what ever data I am trying to pull
 };
 
-
 var opponent2 = {
 	"members": [
 		{
-			"slot": "1",
 			"name": "Player 1",
 			"hero": "Twitch"
 		},
 		{
-			"slot": "2",
 			"name": "Player 2",
 			"hero": "Morgana"
 		},
 		{
-			"slot": "3",
 			"name": "Player 3",
 			"hero": "Ryze"
 		},
 		{
-			"slot": "4",
 			"name": "Player 4",
 			"hero": "Fiddlesticks"
 		},
 		{
-			"slot": "5",
 			"name": "Player 5",
 			"hero":  "Warwick"
 		},

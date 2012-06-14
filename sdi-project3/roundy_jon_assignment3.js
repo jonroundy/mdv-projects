@@ -25,37 +25,38 @@ var team = { 	name: "Viral",
 		Rage: "Graves",
 		Drag: "Shaco"
 	},
-
-	
-
 }; // End of object
-console.log(readyToPlay);
-console.log(team.members.length);
+
+var key = "heros";
+
+for (var key in team.heros ) {
+	console.log("Home Roster: " + "~ Player Name: = " + key + ", Hero: " + team.heros[key]);
+	
+};
+
+
 var key = "members";
-
-console.log( team["sayHi"] );
-
-//team.sayHi();
-//team["sayHi"]();
-
-//team.sayHi = function () {
-//		console.log("Get lost.");
-//};
 
 team.sayHi();
 
-// to run a loop within an object
-for (var key in team) {
-		console.log("key: " + key + ", value: ", team[key]);
-	
-};
-
-var teamRoster = function (team) {
-	for (var i = 0; i < team.heros; i++){
-		var members = team.heros[i];
-		console.log("Player Slot: " + team.heros  + ", Player Name: " + member.name + ", Hero: " + member.hero);
+var handleData = function (opponent) {
+	for (var i = 0; i < opponent.members.length; i++){
+		var member = opponent.members[i];
+		console.log("Enemy Roster: " + "~ Player Name: = " + member.name + ", Hero: " + member.hero);
 	};
 };
+
+handleData(opponent2);
+
+
+var jsonstring = JSON.stringify(opponent);
+console.log(jsonstring);
+
+var receivedjson = JSON.parse(jsonstring);
+console.log(receivedjson);
+
+
+//Gathered Notes and variations of code - REMOVE ALL BEFORE FINAL COMMIT AND TURN IN
 
 /*This will show all values listed inside the object*/
 //console.log(student);
@@ -72,24 +73,15 @@ var teamRoster = function (team) {
 // when ever a key is used within an object to specify a value anything other then a function are called Property!
 //if we use a key to store a function we call this a method
 
-
-
-
 //console.log(opponent.members["slot1"].name); //This pulls the single json value requested
 
-var handleData = function (opponent) {
-	for (var i = 0; i < opponent.members.length; i++){
-		var member = opponent.members[i];
-		console.log("Player Slot: " + member.slot + ", Player Name: " + member.name + ", Hero: " + member.hero);
-	};
-};
+//console.log( team["sayHi"] );
 
-handleData(opponent2);
+//team.sayHi();
+//team["sayHi"]();
 
-/*
-var jsonstring = JSON.stringify(json);
-console.log(jsonstring);
+//team.sayHi = function () {
+//		console.log("Get lost.");
+//};
 
-var receivedjson = JSON.parse(jsonstring);
-console.log(receivedjson);
-*/
+//console.log(readyToPlay);
