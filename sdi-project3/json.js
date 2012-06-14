@@ -1,45 +1,63 @@
 
-var json = {
-	"friends": {
-		"001435235": {
-			"name": "Chris",
-			"age": 30
+var opponent = {
+	"members": {
+		"slot1": {
+			"name": "Player 1",
+			"hero": "Twitch"
 		},
-		"001435236": {
-			"name": "Scott",
-			"age": 42
+		"slot2": {
+			"name": "Player 2",
+			"hero": "Morgana"
 		},
-		"001435237": {
-			"name": "Jason",
-			"age": 32
-		}
+		"slot3": {
+			"name": "Player 3",
+			"hero": "Ryze"
+		},
+		"slot4": {
+			"name": "Player 4",
+			"hero": "Fiddlesticks"
+		},
+		"slot5": {
+			"name": "Player 5",
+			"hero": "Warwick"
+		},	
 	}		
 };
 
-json.friends["001435235"].name //or I can ["name] at the end of for another allowed syntax
+//json.friends["001435235"].name //or I can ["name] at the end of for another allowed syntax
 
-/*for (var key in json.friends){
-	var friend = json.friends[key]
-	friend.name // or age or what ever data I am trying to pull
+for (var key in opponent.members){
+	var member = opponent.members[key]
+	//friend.name // or age or what ever data I am trying to pull
 };
-*/
 
-var json2 = {
-	"friends": [
+
+var opponent2 = {
+	"members": [
 		{
-			"uuid": "001435235",
-			"name": "Chris",
-			"age": 30
+			"slot": "1",
+			"name": "Player 1",
+			"hero": "Twitch"
 		},
 		{
-			"uuid": "001435236",
-			"name": "Scott",
-			"age": 42
+			"slot": "2",
+			"name": "Player 2",
+			"hero": "Morgana"
 		},
 		{
-			"uuid": "001435237",
-			"name": "Jason",
-			"age": 32
+			"slot": "3",
+			"name": "Player 3",
+			"hero": "Ryze"
+		},
+		{
+			"slot": "4",
+			"name": "Player 4",
+			"hero": "Fiddlesticks"
+		},
+		{
+			"slot": "5",
+			"name": "Player 5",
+			"hero":  "Warwick"
 		},
 	]	
 };
