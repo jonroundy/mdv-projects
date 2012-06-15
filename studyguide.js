@@ -90,13 +90,13 @@ var pirateShip = function (name) {
 	var cargoHold = [];
 	var crew = [];
 	var cargoLoad = function (item) {
-		if (item !== "elephants"){
+		if (item !== "elephants")
 			cargoHold.push(item);
-		} else {
+		 else 
 			console.log("Not allowed to load elephants!");
-		}
 		
-	};
+}	
+	
 	var cargoList = function () {
 		for (var n = 0; n < cargoHold.length; n++) {
 			console.log(name + " cargo " + n + ": " +
