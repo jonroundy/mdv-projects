@@ -24,11 +24,8 @@ var opponent = {
 	}		
 };
 
-//json.friends["001435235"].name //or I can ["name] at the end of for another allowed syntax
-
 for (var key in opponent.members){
 	var member = opponent.members[key]
-	//friend.name // or age or what ever data I am trying to pull
 };
 
 var opponent2 = {
