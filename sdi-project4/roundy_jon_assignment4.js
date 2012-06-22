@@ -93,6 +93,15 @@ var roundUp = function (str){
 	};
  // End Problem 6
 
+// Start Problem 7
+/* Problem 7 - Fuzzy-match a number: is the number above or below a number within a certain percent? */
+// Could never figure out or find enough ref to fuzzy match
+//End Problem 7
+
+// Start Problem 8
+/* Problem 8 Find the number of hours or days difference between two dates. */
+
+
 return{
 	"usNumValidation" : usNumValidation,
 	"emailValidation" : emailValidation,
@@ -100,6 +109,7 @@ return{
 	"titleCase"       : titleCase,
 	"stringSep"       : stringSep,
 	"roundUp"         : roundUp
+
 	}; // End of function returns
 }; // End of library
 
@@ -118,4 +128,5 @@ lib.titleCase("this is a test");
 lib.stringSep("a,b,c");
 // Problem 6
 lib.roundUp("2.1");
-
+// Problem 7
+// Could never figure out or find enough ref to fuzzy match
