@@ -53,9 +53,21 @@ var urlValidation = function (urlcheck){
 }; // End Problem 3
 // Problem 4 Title-case a string (split into words, then uppercase the first letter of each word)
 // Start Problem 4
+var titleCase = function(str){
+/* string.prototype with this function it uses the pattern shown below w taking the first character of each word
+within the string then * continues the previous task and continues it globally and changes the first character of
+each word to uppercase then returns the rest of each word with lowercase.  */
+	String.prototype.toProperCase = function (){
 
+			return this.replace(/\w*/g, function (newTxt){
+				return newTxt.charAt(0).toUpperCase() + newTxt.substr(1).toLowerCase();
+		});
+	};
+	str.toProperCase();
+	console.log(str.toProperCase());
 
-//function(){
+};
+
 
 
 //};
@@ -64,8 +76,7 @@ return{
 	"usNumValidation" : usNumValidation,
 	"emailValidation" : emailValidation,
 	"urlValidation"   : urlValidation,
-	"titleCase"       : titleCase,
-
+	"titleCase"       : titleCase
 
 
 	}; // End of function returns
@@ -81,5 +92,4 @@ lib.emailValidation("test@abc.com"); // Runs emailValidation from library. () is
 // Problem 3
 lib.urlValidation("http://www.domain.com");
 // Problem 4
-lib.titleCase("thisisatest");
-
+lib.titleCase("this is a test");
