@@ -70,11 +70,11 @@ each word to uppercase then returns the rest of each word with lowercase.  */
 
 /* Problem 5 - Given a string that is a list of things seperated by a given string, as well as another string separator,
 return a string with the first seperator changed to the second "a,b,c" + "," + "/" ->"a/b/c". */
-
+// Start Problem 5
 var stringSep = function(str){
 	
 	String.prototype.valueOf = function () {
-
+ // Used genexp to change all values of , to /
 	return this.replace(/\,/g, "\/", function (inputField){
 		return inputField.valueOf("");
 
@@ -85,13 +85,21 @@ var stringSep = function(str){
 
 }; // End Problem 5
    
+/* Problem 6 Format a number to use a specific number of decimal places, as for money: 2.1 -> 2.10 */
+var roundUp = function (str){
+	var fixed = parseFloat(str).toFixed(2); // I used parseFloat so it is treated as a decimal and not a string.
+	console.log(fixed);
+	return fixed;
+	};
+ // End Problem 6
+
 return{
 	"usNumValidation" : usNumValidation,
 	"emailValidation" : emailValidation,
 	"urlValidation"   : urlValidation,
 	"titleCase"       : titleCase,
-	"stringSep"       : stringSep
-
+	"stringSep"       : stringSep,
+	"roundUp"         : roundUp
 	}; // End of function returns
 }; // End of library
 
@@ -108,4 +116,6 @@ lib.urlValidation("http://www.domain.com");
 lib.titleCase("this is a test");
 // Problem 5
 lib.stringSep("a,b,c");
+// Problem 6
+lib.roundUp("2.1");
 
