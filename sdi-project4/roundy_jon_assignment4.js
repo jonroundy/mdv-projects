@@ -66,18 +66,31 @@ each word to uppercase then returns the rest of each word with lowercase.  */
 	str.toProperCase();
 	console.log(str.toProperCase());
 
-};
+};// End Problem 4
 
+/* Problem 5 - Given a string that is a list of things seperated by a given string, as well as another string separator,
+return a string with the first seperator changed to the second "a,b,c" + "," + "/" ->"a/b/c". */
 
+var stringSep = function(str){
+	
+	String.prototype.valueOf = function () {
 
-//};
+	return this.replace(/\,/g, "\/", function (inputField){
+		return inputField.valueOf("");
 
+		});
+	};
+	str.valueOf();
+	console.log(str.valueOf());
+
+}; // End Problem 5
+   
 return{
 	"usNumValidation" : usNumValidation,
 	"emailValidation" : emailValidation,
 	"urlValidation"   : urlValidation,
-	"titleCase"       : titleCase
-
+	"titleCase"       : titleCase,
+	"stringSep"       : stringSep
 
 	}; // End of function returns
 }; // End of library
@@ -93,3 +106,6 @@ lib.emailValidation("test@abc.com"); // Runs emailValidation from library. () is
 lib.urlValidation("http://www.domain.com");
 // Problem 4
 lib.titleCase("this is a test");
+// Problem 5
+lib.stringSep("a,b,c");
+
