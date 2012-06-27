@@ -86,20 +86,58 @@ var stringSep = function(str){
 }; // End Problem 5
    
 /* Problem 6 Format a number to use a specific number of decimal places, as for money: 2.1 -> 2.10 */
+// Start problem 6
 var roundUp = function (str){
 	var fixed = parseFloat(str).toFixed(2); // I used parseFloat so it is treated as a decimal and not a string.
 	console.log(fixed);
 	return fixed;
-	};
- // End Problem 6
+	}; // End Problem 6
 
 // Start Problem 7
-/* Problem 7 - Fuzzy-match a number: is the number above or below a number within a certain percent? */
+//Problem 7 - Fuzzy-match a number: is the number above or below a number within a certain percent? */
 // Could never figure out or find enough ref to fuzzy match
 //End Problem 7
 
+
+/* Problem 8 - Find the number of hours or days difference between two dates. */
 // Start Problem 8
-/* Problem 8 Find the number of hours or days difference between two dates. */
+var schoolStart = function (startDate) {
+	var coursesStarted = startDate;
+	var currentDate = new Date();
+  var day = currentDate.getDate();
+  var month = currentDate.getMonth() + 1;
+  var year = currentDate.getFullYear();
+  var msInDays = 1000 * 60 * 60 * 24;
+  console.log(Math.ceil((currentDate()) - startDate.getTime()) / (msInDays)) + "days since I started sdi " + startDate)
+
+
+}; // End Problem 8
+
+/* Problem 9 - Given a string version of a number such as "42", return the value as an actual Number such as 42. */
+// Start Problem 9
+
+// End Problem 9
+
+/* Problem 10 - Find the smallest value in an array that is greater than a given number */
+// Start Problem 10
+
+// End Problem 10
+
+/* Problem 11 - Find the total value of just the numbers in an array, even if some of the items are not numbers. */
+// Start Problem 11
+
+// End Problem 11
+
+/* Problem 12 - Given an array of object and the name of a key, return the array sorted by the balue of that key in
+each of the objects: "a" + [{a:2},{a:3},{a:1}] -> [{a:1},{a:2},{a:3}] */
+// Problem 12 Start
+
+// Problem 12 Stop
+
+
+
+
+
 
 
 return{
@@ -108,10 +146,11 @@ return{
 	"urlValidation"   : urlValidation,
 	"titleCase"       : titleCase,
 	"stringSep"       : stringSep,
-	"roundUp"         : roundUp
-
+	"roundUp"         : roundUp,
+	"startDate"       : startDate
 	}; // End of function returns
 }; // End of library
+
 
 // Function Calls
 
@@ -130,3 +169,5 @@ lib.stringSep("a,b,c");
 lib.roundUp("2.1");
 // Problem 7
 // Could never figure out or find enough ref to fuzzy match
+// Problem 8
+lib.startDate(new Date(2012, 5, 28));
