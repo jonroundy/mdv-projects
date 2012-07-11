@@ -1,0 +1,14 @@
+/*
+
+title: index.html Styles
+By: Jon Roundy
+for: VFW - 1207 - Week 2 - Project 2
+
+*/
+
+h1{
+	margin: 10px 20px;
+	border: 1px solid #000;
+	text-shadow: 0px 1px 1px rgba(0,0,0,.2);
+	
+}
