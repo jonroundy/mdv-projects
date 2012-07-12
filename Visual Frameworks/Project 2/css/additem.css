@@ -1,0 +1,22 @@
+/*
+
+title: index.html Styles
+By: Jon Roundy
+for: VFW - 1207 - Week 2 - Project 2
+
+*/
+
+html {
+	
+	position: relative;
+}
+
+
+
+
+body {
+	background:#303030 url(images/bg.jpg) repeat;
+	font-size:100%;
+	line-height:1em;
+	text-align:left;
+	color: white;
