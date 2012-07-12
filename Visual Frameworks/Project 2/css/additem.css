@@ -5,18 +5,59 @@ By: Jon Roundy
 for: VFW - 1207 - Week 2 - Project 2
 
 */
-
-html {
-	
-	position: relative;
-}
-
-
-
-
 body {
+
 	background:#303030 url(images/bg.jpg) repeat;
 	font-size:100%;
 	line-height:1em;
 	text-align:left;
 	color: white;
+}
+
+
+h1 {
+	font-size: 30px;
+	color: white;
+	font-weight: bold;
+	padding: 12px;
+	text-align: center;
+	margin: 5px 5px;
+	border: 3px groove rgba(246,246,246,0.7);
+	border-radius: 315px;
+	background: rgba(5,17,32,0.96);
+}
+
+fieldset.taskinfo {
+	font-size: 15px;
+	background: -webkit-linear-gradient(#c7bdaa 0%, #afaca9 100%);
+	color: black;
+	padding: 15px;
+	font-weight: bold;
+	text-align: left;
+	margin: 5px 5px;
+	border: 3px solid rgba(246,246,246,0.7);
+	border-radius: 13px;
+	line-height: 30px;
+}
+
+legend.lheader {
+	font-size: 23px;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+	margin: -18px;
+	border: 4px outset rgba(246,246,246,0.7);
+	border-radius: 15px 24px 50px 0px;
+	padding: 5px;
+	background: rgba(5,17,32,0.96);
+}
+
+input {
+
+	
+}
+
+input#urgent {
+
+}
+	float:right;
