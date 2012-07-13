@@ -8,14 +8,31 @@ window.addEventListener("DOMContentLoaded", function(){
 
 	//getElementById Function
 	function g(x){
-		var theElement document.getElementById(x);
+		var theElement = document.getElementById(x);
 		return theElement;
 	}
 	
-	//Variable defaults
-	var categoryLists = ["--Choose a category", "Personal", "Work", "Misc"];
-
+	//Create select field element and populate with options.
+	function makeCats(){
+			var formTag = document.getElementsByTagName("form"), //formag is an array of all the form tags.
+				selectLi = g('select'),
+				makeSelect = document.createElement('select');
+				makeSelect.setAttribute("id", "groups");
+			for(var i=0, j=categoryLists.length; i<j; i++){
+				var makeOption = document.createElement('option');
+				var optText = categoryLists[i];
+				makeOption.setAttribute("value", optText);
+				makeOption.innerHTML = optText;
+				makeSelect.appendChild(makeOption);
+			}
+			selectLi.appendChild(makeSelect);
+	}
 	
+	//Variable defaults
+	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"];
+	makeCats();
+	
+	/*
 	//Set Link & ubmit Click Events
 	var displayLink = g('displayLink');
 	displayLink.addEventLister("click", getData);
@@ -23,9 +40,11 @@ window.addEventListener("DOMContentLoaded", function(){
 	clearLink.addEventLister("click", clearLocal);
 	var save = g("submit");
 	save.addEventLister("click", storeData);
-
+	
+	*/
 
 });
+
 
 
 
