@@ -28,6 +28,12 @@ window.addEventListener("DOMContentLoaded", function(){
 			selectLi.appendChild(makeSelect);
 	}
 	
+	
+	function storeData(){
+		localStorage.setItem("test", "hello");
+		alert(localStorage.length);
+	}
+	
 	//Variable defaults
 	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"];
 	makeCats();
@@ -35,13 +41,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	/*
 	//Set Link & ubmit Click Events
 	var displayLink = g('displayLink');
-	displayLink.addEventLister("click", getData);
+	displayLink.addEventListener("click", getData);
 	var clearLink = g("clear");
-	clearLink.addEventLister("click", clearLocal);
+	clearLink.addEventListener("click", clearLocal);*/
 	var save = g("submit");
-	save.addEventLister("click", storeData);
+	save.addEventListener("click", storeData);
 	
-	*/
 
 });
 
