@@ -32,6 +32,10 @@ a#displayLink{
 	margin-left: 30px;
 }
 
+#items ul  {
+	margin-top: 20px;
+}
+
 fieldset#task {
 	font-size: 15px;
 	background: -webkit-linear-gradient(#c7bdaa 0%, #afaca9 100%);

@@ -36,9 +36,28 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function toggleControls(n){
+		switch(n){
+			case "on":
+				g('taskForm').style.display = "none";
+				g('clear').style.display = "inline";
+				g('displayLink').style.display = "none";
+				g('addNew').style.display = "inline";
+				break;
+			case "off":
+				g('taskForm').style.display = "block";
+				g('clear').style.display = "inline";
+				g('displayLink').style.display = "inline";
+				g('addNew').style.display = "none";
+				g('items').style.display = "none";
+				break;
+			default:
+				return false;
+		}
+	}
 	//Save data into local storage.
 	function storeData(key){
-			var id = Math.floor(Math.random()*100000001);
+			var id 					= Math.floor(Math.random()*100000001);
 			//Gather up all our form field values and store in an object.
 			//Object properties are going to contain array with the form label and input value
 			getCheckboxVault();
@@ -70,6 +89,48 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 	}
 	
+	function getData(){
+			toggleControls("on");	
+				if(localStorage.length === 0){
+			alert("There are no task's to display.");
+		}
+		//Write Data from Local Storage to the browser.
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "items");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		g('items').style.display = "block";
+		for(var i=0, len=localStorage.length; i<len;i++){
+			var makeli = document.createElement('li');
+			makeList.appendChild(makeli);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			//Convert the string from local storage value back to an object by using JSON.parse()
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeli.appendChild(makeSubList);
+			for(var n in obj){
+				var makeSubli = document.createElement('li');
+				makeSubList.appendChild(makeSubli);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubli.innerHTML = optSubText;
+				
+			}
+		}
+	
+	}
+	
+	function clearLocal(){
+		if(localStorage.length === 0){
+			alert("There is no data to clear.")
+		}else{	
+			localStorage.clear();
+			alert("All tasks deleted!")
+			window.location.reload();
+			return false;
+		}
+	}
 	
 	//Variable defaults
 	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"],
@@ -77,55 +138,18 @@ window.addEventListener("DOMContentLoaded", function(){
 	;
 	makeCats();
 	
-	
-	
 	//Set Link & ubmit Click Events
-	//var displayLink = g('displayLink');
-	//displayLink.addEventListener("click", getData);
 	
-	//var clearLink = g("clear");
-	//clearLink.addEventListener("click", clearLocal);
+	var displayLink = g('displayLink');
+	displayLink.addEventListener("click", getData);
+	
+	var clearLink = g("clear");
+	clearLink.addEventListener("click", clearLocal);
 	
 	var save = g("submit");
 	save.addEventListener("click", storeData);
 	
 
-});
-
-
-
-
-/*
-	//getElementById Funtion
-	function f(x){
-			var theElement = document.getElementById(x);
-			return theElement;
-	}
-
-	//Define Vars
-	var pw = t('password');
-	var cpw = t('conirm');
-	var check = t('submit');
-
-	//console.log(pw);
-	var checkpw = function(){
-		if(pw.value != ""){
-			cpw.removeAttribute("disabled", "disabled");
-		}else{
-			cpw.setAttribute("disabled", "disabled");
-			
-		}
-	};
-		
-		var compare = function(){
-		if(){
-			alert("The passwords match!")	
-		}else{}
-			alert("The passwords DO NOT match!");
-		}
-	};
 	
-		pw.addEventListener("blur", checpw)
-		check.addEventListener("click", compare);
+
 });
-*/

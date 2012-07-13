@@ -21,7 +21,7 @@
        	 <a href="additem.html" id="addNew" style="display:none;">Add New Item</a>
        </nav>
        
-    <form action="#" method="post" id="contactForm" onsubmit="return false;">
+    <form action="#" method="post" id="taskForm">
         <fieldset id="task">
             <legend id="htask">Task Info</legend> 
             
@@ -31,7 +31,7 @@
                 <li><label for="taskname">My task name:</label> <input type="text" id="taskname" placeholder="e.g. project due soon!"></li>
                 <li><label for="date">Date: </label><input type="date" id="date"> </li>
                 <li><label for="time">Time: </label><input type="time" id="time"></li>
-                <li><label for="urgent">Urgent!</label> <input type="checkbox" id="urgent"> 
+                <li><input type="checkbox" id="urgent"><label for="urgent">Urgent!</label> 
                 <li>Estimated amount of time task will take (In hours):</li>
                 <input id="slider1" type="range" min="1" max="24" step="1" /> 
             </ul>
@@ -39,14 +39,11 @@
     
         <fieldset id="optional">
             <legend id="hopt">Optional Fields</legend>
-
+            
             <ul>
                 <li><label for="textbox"> Notes:</label><br>
                 <textarea rows="4" cols="30" id="textbox" placeholder="Enter notes here....">
 </textarea></li>
-
-                <li><input type="hidden" value="true"></li> 
-                <!-- Do not think this was needed for the assignment -->
             
             </ul>
         </fieldset>
