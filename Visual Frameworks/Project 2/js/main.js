@@ -6,6 +6,30 @@
 
 window.addEventListener("DOMContentLoaded", function(){
 
+	//getElementById Function
+	function g(x){
+		var theElement document.getElementById(x);
+		return theElement;
+	}
+	
+	//Variable defaults
+	var categoryLists = ["--Choose a category", "Personal", "Work", "Misc"];
+
+	
+	//Set Link & ubmit Click Events
+	var displayLink = g('displayLink');
+	displayLink.addEventLister("click", getData);
+	var clearLink = g("clear");
+	clearLink.addEventLister("click", clearLocal);
+	var save = g("submit");
+	save.addEventLister("click", storeData);
+
+
+});
+
+
+
+/*
 	//getElementById Funtion
 	function f(x){
 			var theElement = document.getElementById(x);
@@ -38,3 +62,4 @@ window.addEventListener("DOMContentLoaded", function(){
 		pw.addEventListener("blur", checpw)
 		check.addEventListener("click", compare);
 });
+*/

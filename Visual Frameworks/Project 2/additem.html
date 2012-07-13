@@ -1,75 +1,58 @@
-<!DOCTYPE html5>
-<!-- Author: Jon Roundy 
-	 VFW 1206 Week 1 
-	 Project 1       -->
-
+<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="description" content="Todo List App, Just add and stay on task">
-    <meta name="keywords" content="productivity, time management, mobile app">
-    <meta name="robots" content="index, follow">
-    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-    <meta name="viewport" content="target-densitydpi=device-dpi">
-    <meta name="HandheldFriendly" content="True">
-
-    <title>Todo List</title>
-    <link href="css/additem.css" rel="stylesheet" media="screen" type="text/css" /> 
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Todo List App, Just add and stay on task">
+    	<meta name="keywords" content="productivity, time management, mobile app">
+    	<meta name="robots" content="index, follow">
+    	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    	<meta name="viewport" content="target-densitydpi=device-dpi">
+    	<meta name="HandheldFriendly" content="True">
+    	<title>Todo List</title>
+    	<link href="css/additem.css" rel="stylesheet" media="screen" type="text/css" /> 
     <script src="js/main.js" type="text/javascript"></script>
 </head>
-
 <body>
     <header>
         <h1>Todo List</h1>
     </header>
 
-    </br>
-
     <form>
-        <fieldset class="taskinfo">
-            <legend class="lheader">Task Info</legend> 
-             <label>Select Category</label> 
-         <select>
-         	<option value="1"> Personal </option>
+        <fieldset id="task">
+            <legend id="htask">Task Info</legend> 
+            
+            <!-- <span id="req">* fields are required.</span>    === Maybe? ===   --> 
 
-         	<option value="2"> Work </option>
-
-         	<option value="3"> Misc </option>
-        </select>
-
-            <ul>
-                <li><label for="taskname">My task name:</label> <input type="text" id="taskname" name="taskname" placeholder="e.g. project due soon!"></li>
-
-                <li>Date: <input type="date"> </li>
-
-                <li>Time: <input type="time"> </li>
-
-                <li><label id="urgent">Urgent!</label> <input type="checkbox" id="urgent" name="urgent"> </li>
-
-                <li>Estimated amount of time task will take (In hours):
-                
-                	<input id="slider1" type="range" min="1" max="24" step="1" /> 
-                </li>
+        		<li id="select"><label for="category">*Select Category:</label><br /></li>
+                <li><label for="taskname">My task name:</label> <input type="text" id="taskname" placeholder="e.g. project due soon!"></li>
+                <li><label for="date">Date: </label><input type="date" id="date"> </li>
+                <li><label for="time">Time: </label><input type="time" id="time"></li>
+                <li><label for="urgent">Urgent!</label> <input type="checkbox" id="urgent"> 
+                <li>Estimated amount of time task will take (In hours):</li>
+                <input id="slider1" type="range" min="1" max="24" step="1" /> 
             </ul>
-        </fieldset>
+        </fieldset> <!-- end of Task Info -->
     
-    </br>
-    
-        <fieldset class="taskinfo">
-            <legend class="lheader">Optional Fields</legend>
+        <fieldset id="optional">
+            <legend id="hopt">Optional Fields</legend>
 
             <ul>
                 <li><label for="textbox"> Notes:</label><br>
                 <textarea rows="4" cols="30" id="textbox" placeholder="Enter notes here....">
 </textarea></li>
 
-                <li><input type="hidden" value="true"></li>
+                <li><input type="hidden" value="true"></li> 
+                <!-- Do not think this was needed for the assignment -->
+            
             </ul>
         </fieldset>
-        <input type="submit" id="submit" value="Submit"> 
-        <input type="reset" formcation="#" value="Clear Stored Data"> 
-        <input type="button" formcation="#" value="Display Data">
-    
+       
+        <input type="submit" value="Save Task" id="submit"> 
+       <nav> 
+        <a href="#" id="clear">Clear Stored Data</a>
+        <a href="#" id="displayLink">Display Data</a>
+        <a href="additem.html" id="addNew" style="display:none;">Add New Item</a>
+       </nav>
     </form>
 </body>
 </html>

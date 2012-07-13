@@ -19,45 +19,62 @@ h1 {
 	font-size: 30px;
 	color: white;
 	font-weight: bold;
-	padding: 12px;
+	padding: 14px;
 	text-align: center;
-	margin: 5px 5px;
+	margin: 5px 5px 35px;
 	border: 3px groove rgba(246,246,246,0.7);
 	border-radius: 315px;
 	background: rgba(5,17,32,0.96);
+
 }
 
-fieldset.taskinfo {
+fieldset#task {
 	font-size: 15px;
 	background: -webkit-linear-gradient(#c7bdaa 0%, #afaca9 100%);
 	color: black;
 	padding: 15px;
 	font-weight: bold;
 	text-align: left;
-	margin: 5px 5px;
+	margin: 5px 5px 35px;
 	border: 3px solid rgba(246,246,246,0.7);
 	border-radius: 13px;
 	line-height: 30px;
 }
 
-legend.lheader {
+fieldset#optional {
+	font-size: 15px;
+	background: -webkit-linear-gradient(#c7bdaa 0%, #afaca9 100%);
+	color: black;
+	padding: 15px;
+	font-weight: bold;
+	text-align: left;
+	margin: 5px 5px 35px;
+	border: 3px solid rgba(246,246,246,0.7);
+	border-radius: 13px;
+	line-height: 30px;
+}
+
+legend#htask {
 	font-size: 23px;
 	color: white;
 	font-weight: bold;
 	text-align: left;
 	margin: -18px;
 	border: 4px outset rgba(246,246,246,0.7);
-	border-radius: 15px 24px 50px 0px;
+	border-radius: 15px 15px 30px 0px;
 	padding: 5px;
 	background: rgba(5,17,32,0.96);
 }
 
-input {
-
-	
+legend#hopt {
+	font-size: 23px;
+	color: white;
+	font-weight: bold;
+	text-align: left;
+	margin: -18px;
+	border: 4px outset rgba(246,246,246,0.7);
+	border-radius: 15px 15px 30px 0px;
+	padding: 5px;
+	background: rgba(5,17,32,0.96);
 }
 
-input#urgent {
-
-}
-	float:right;
