@@ -28,22 +28,43 @@ window.addEventListener("DOMContentLoaded", function(){
 			selectLi.appendChild(makeSelect);
 	}
 	
-	
-	function storeData(){
-		localStorage.setItem("test", "hello");
-		alert(localStorage.length);
+	//Save data into local storage.
+	function storeData(key){
+		//Find Values of Checkboxes and Radios
+		//setCheckboxValue();
+		//Save form elements into LS
+		localStorage.setItem("Category List", g('groups').value);
+		localStorage.setItem("Task Name", g('taskname'.value);
+		alert("Task Saved!");
 	}
+	
+	
+	//Clear all data
+	//function clearLocal() {
+//		if(localStorage.lengh === 0){
+	//		alert("There is no data to clear.");
+	//		}else{
+	//			localStorage.clear();
+	//			alert("All tasks deleted.");
+	//			window.location.reload();
+	//			return false;
+	//	}
+		
+	//}
 	
 	//Variable defaults
 	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"];
 	makeCats();
 	
-	/*
+	
+	
 	//Set Link & ubmit Click Events
-	var displayLink = g('displayLink');
-	displayLink.addEventListener("click", getData);
-	var clearLink = g("clear");
-	clearLink.addEventListener("click", clearLocal);*/
+	//var displayLink = g('displayLink');
+	//displayLink.addEventListener("click", getData);
+	
+	//var clearLink = g("clear");
+	//clearLink.addEventListener("click", clearLocal);
+	
 	var save = g("submit");
 	save.addEventListener("click", storeData);
 	
