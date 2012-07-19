@@ -1,4 +1,4 @@
-// Project 2: To Do List
+// Project 3: To Do List
 // Visual Frameworks (VFW)
 // Mobile Development
 // Jon Roundy
@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	//Create select field element and populate with options.
 	function makeCats(){
-			var formTag = document.getElementsByTagName("form"), //formag is an array of all the form tags.
+			var formTag = document.getElementsByTagName("form"), //formTag is an array of all the form tags.
 				selectLi = g('select'),
 				makeSelect = document.createElement('select');
 				makeSelect.setAttribute("id", "groups");
@@ -103,6 +103,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		g('items').style.display = "block";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeli = document.createElement('li');
+			var linksLi = document.createElement('li')
 			makeList.appendChild(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -115,11 +116,59 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubList.appendChild(makeSubli);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubli.innerHTML = optSubText;
-				
+				makeSubList.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi); //Create our edit and delete buttons/links for each item in local storage.
 		}
 	
 	}
+	//Make Item Links
+	//Create the edit and delete links for each storred item when displayed
+	function makeItemLinks(key, linksLi){
+		//add edit single item link
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Task";
+		editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		//add line break
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
+		//add delete single item link
+		var deleteLink = document.createElement('a');
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Task";
+		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
+	}
+	
+	function editItem(){
+		//Grab the data from our item from Local Storage.
+		var value = localStorage.getItem(this.key);
+		var item = JSON.parse(value);
+		
+		//Show the form
+		toggleControls("off")
+		
+		//populate the form fields with current localStorage values.
+		g('groups').value = item.cats[1];
+		//g('date').value = item.date[1];
+	//	g('time').value = item.time[1];
+		if(item.urgent[1] == "on"){
+		g('urgent').setAttribute("checked", "checked");
+		}
+		g('slider1').value = item.slider1[1];
+		g('date').value = item.date[1];
+		g('textbox').value = item.textbox[1];
+		g('time').value = item.time[1];
+	}
+	
 	
 	function clearLocal(){
 		if(localStorage.length === 0){
