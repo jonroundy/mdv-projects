@@ -23,20 +23,19 @@
        
     <form action="#" method="post" id="taskForm">
         <fieldset id="task">
-            <legend id="htask">Task Info</legend> 
-            
-            <!-- <span id="req">* fields are required.</span>    === Maybe? ===   --> 
+            <legend id="htask">Task Info</legend>     
+            <span id="req">* fields are required.</span>
+            <ul id="errors"></ul>
             <ul>
         		<li id="select"><label for="group">*Select Category:</label><br /></li>
-                <li><label for="taskname">My task name:</label> <input type="text" id="taskname" placeholder="e.g. project due soon!"></li>
-                <li><label for="date">Date: </label><input type="date" id="date"> </li>
-                <li><label for="time">Time: </label><input type="time" id="time"></li>
+                <li><label for="taskname">*My task name:</label> <input type="text" id="taskname" placeholder="e.g. project due soon!"></li>
+                <li><label for="date">*Date: </label><input type="date" id="date"> </li>
+                <li><label for="time">*Time: </label><input type="time" id="time"></li>
                 <li><input type="checkbox" id="urgent"><label for="urgent">Urgent!</label> 
                 <li>Estimated amount of time task will take (In hours):</li>
                 <input id="slider1" type="range" min="1" max="24" step="1" /> 
             </ul>
         </fieldset> <!-- end of Task Info -->
-    
         <fieldset id="optional">
             <legend id="hopt">Optional Fields</legend>
             

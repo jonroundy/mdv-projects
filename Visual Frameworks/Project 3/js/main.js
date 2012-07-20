@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		if(g('urgent').checked){
 			urgentValue = g('urgent').value;
 		}else{
-			urgentValue	= "No"
+			urgentValue	= "No";
 		}
 	}
 	
@@ -61,12 +61,12 @@ window.addEventListener("DOMContentLoaded", function(){
 			//Gather up all our form field values and store in an object.
 			//Object properties are going to contain array with the form label and input value
 			getCheckboxVault();
-			var item 				= {};
-			item.cats 				= ["Category List: ", g("groups").value];
-			item.taskname 			= ["My Task Name: ", g("taskname").value];
-			item.date 				= ["Date: ", g("date").value];
-			item.time 				= ["Time: ", g("time").value];
-			item.urgent 			= ["Urgent: ", urgentValue];
+			var item				= {};
+			item.cats				= ["Category List: ", g("groups").value];
+			item.taskname			= ["My Task Name: ", g("taskname").value];
+			item.date				= ["Date: ", g("date").value];
+			item.time				= ["Time: ", g("time").value];
+			item.urgent				= ["Urgent: ", urgentValue];
 			item.slider1			= ["Estimated Time.", g("slider1").value];
 			item.textbox			= ["Notes: ", g("textbox").value];
 			//Save data into Local Storage: Use Stringify to convert our object to a 	string. Local storage only stores strings.
@@ -167,7 +167,20 @@ window.addEventListener("DOMContentLoaded", function(){
 		g('date').value = item.date[1];
 		g('textbox').value = item.textbox[1];
 		g('time').value = item.time[1];
+		g('taskname').value = item.taskname[1];
+	
+		//Remove the initial listener from the input 'save contact button'
+		save.removeEventListener("click", storeData)
+		//Change the submit button Value to Edit Button
+		g('submit').value = "Edit Task";
+		var editSubmit = g('submit');
+		//Save the key value established in this function as a property of the editSubmit event
+		//so we can use that value when we save the data we edited.
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
+	
 	}
+	
 	
 	
 	function clearLocal(){
@@ -181,9 +194,59 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
+	function validate(eData){
+		//Define the elements we want to check
+		var getCats = g('cats');
+		var getTaskName = g('taskname');
+		var getDate = g('date');
+		var getTime = g('time');
+	
+		//Get Error Messages
+		var messageAry = [];
+		//Cats Validation
+		if(getCats.value === "--Choose A Category--"){
+			var catsError = "Please choose a category.";
+			getCats.style.border = "1px solid red";
+			messageAry.push(catsError);
+		}
+		
+		//Task Name Validation
+		if(getTaskName.value === ''){
+			var tNameError = "Please enter a task name.";
+			getTaskName.style.border = "1px solid red";
+			messageAry.push(tNameError);
+		}
+		
+		//Date Validation
+		if(getDate.value === ''){
+			var dateError = "Please enter the date the task is due on.";
+			getDate.style.border = "1px solid red";
+			messageAry.push(dateError);
+		}
+		
+		//Time Validation
+		if(getTime.value === ''){
+			var timeError = "Please enter the time of day the task is due on.";
+			getTime.style.border = "1px solid red";
+			messageAry.push(timeError);
+		}
+		
+		//If there were errors, display them on screen.
+		if(messageAry.length >= 1){
+			for(var i=0, j=messageAry.length; i < j; i++){
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+		}
+		eData.preventDefault();
+		return false;
+		
+	}
 	//Variable defaults
 	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"],
-		urgentValue = "No"
+		urgentValue = "No",
+		errMsg = g('errors');
 	;
 	makeCats();
 	
@@ -191,12 +254,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	var displayLink = g('displayLink');
 	displayLink.addEventListener("click", getData);
-	
 	var clearLink = g("clear");
 	clearLink.addEventListener("click", clearLocal);
-	
 	var save = g("submit");
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 	
 
 	
