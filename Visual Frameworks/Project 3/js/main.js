@@ -55,13 +55,22 @@ window.addEventListener("DOMContentLoaded", function(){
 				return false;
 		}
 	}
+	
 	//Save data into local storage.
 	function storeData(key){
-			var id 					= Math.floor(Math.random()*100000001);
+		//If there is no key, this means this is a brand new item and we need a new key.
+		if(!key){
+			var id					= Math.floor(Math.random()*100000001);
+		}else{
+			//Set the id to the existing key we're editing so that it will save over the data.
+			//The key is the same ky that's been passed along from the editSubmit event handler
+			//To the validate function, and then passed here, into the storeData function.
+			id = key;
+		}
 			//Gather up all our form field values and store in an object.
 			//Object properties are going to contain array with the form label and input value
 			getCheckboxVault();
-			var item				= {};
+		var item				= {};
 			item.cats				= ["Category List: ", g("groups").value];
 			item.taskname			= ["My Task Name: ", g("taskname").value];
 			item.date				= ["Date: ", g("date").value];
@@ -69,31 +78,18 @@ window.addEventListener("DOMContentLoaded", function(){
 			item.urgent				= ["Urgent: ", urgentValue];
 			item.slider1			= ["Estimated Time.", g("slider1").value];
 			item.textbox			= ["Notes: ", g("textbox").value];
-			//Save data into Local Storage: Use Stringify to convert our object to a 	string. Local storage only stores strings.
+			//Save data into Local Storage: Use Stringify to convert our object to a string. Local storage only stores strings.
 			//Save form elements into LS
 			localStorage.setItem(id, JSON.stringify(item));
 			alert("Task Saved!");
 }
-	
-	
-	//Clear all data
-	function clearLocal() {
-		if(localStorage.lengh === 0){
-			alert("There is no data to clear.");
-		}else{
-			localStorage.clear();
-			alert("All tasks deleted.");
-			window.location.reload();
-			return false;
-		}
-		
-	}
-	
+
 	function getData(){
 			toggleControls("on");	
 				if(localStorage.length === 0){
 			alert("There are no task's to display.");
 		}
+		
 		//Write Data from Local Storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "items");
@@ -103,7 +99,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		g('items').style.display = "block";
 		for(var i=0, len=localStorage.length; i<len;i++){
 			var makeli = document.createElement('li');
-			var linksLi = document.createElement('li')
+			var linksLi = document.createElement('li');
 			makeList.appendChild(makeli);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -143,7 +139,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Task";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -154,12 +150,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		var item = JSON.parse(value);
 		
 		//Show the form
-		toggleControls("off")
+		toggleControls("off");
 		
 		//populate the form fields with current localStorage values.
 		g('groups').value = item.cats[1];
-		//g('date').value = item.date[1];
-	//	g('time').value = item.time[1];
+		g('date').value = item.date[1];
+		g('time').value = item.time[1];
 		if(item.urgent[1] == "on"){
 		g('urgent').setAttribute("checked", "checked");
 		}
@@ -170,7 +166,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		g('taskname').value = item.taskname[1];
 	
 		//Remove the initial listener from the input 'save contact button'
-		save.removeEventListener("click", storeData)
+		save.removeEventListener("click", storeData);
 		//Change the submit button Value to Edit Button
 		g('submit').value = "Edit Task";
 		var editSubmit = g('submit');
@@ -180,15 +176,24 @@ window.addEventListener("DOMContentLoaded", function(){
 		editSubmit.key = this.key;
 	
 	}
-	
-	
-	
+
+	function deleteItem(){
+		var ask = confirm("Are you sure you want to delete this task?");
+		if(ask){
+			localStorage.removeItem(this.key);
+			window.location.reload();
+		}else{
+			alert("Task was not deleted!");
+		
+		}
+	}
+
 	function clearLocal(){
 		if(localStorage.length === 0){
-			alert("There is no data to clear.")
+			alert("There is no data to clear.");
 		}else{	
 			localStorage.clear();
-			alert("All tasks deleted!")
+			alert("All tasks deleted!");
 			window.location.reload();
 			return false;
 		}
@@ -196,13 +201,22 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function validate(eData){
 		//Define the elements we want to check
-		var getCats = g('cats');
+		var getCats = g('groups');
 		var getTaskName = g('taskname');
 		var getDate = g('date');
 		var getTime = g('time');
+		
+		//Reset Error Messages
+		errMsg.innerHTML = "";
+		getCats.style.border = "1px solid black";
+		getTaskName.style.border = "1px solid black";
+		getDate.style.border = "1px solid black";
+		getTime.style.border = "1px solid black";
+
 	
 		//Get Error Messages
 		var messageAry = [];
+		
 		//Cats Validation
 		if(getCats.value === "--Choose A Category--"){
 			var catsError = "Please choose a category.";
@@ -238,10 +252,14 @@ window.addEventListener("DOMContentLoaded", function(){
 				txt.innerHTML = messageAry[i];
 				errMsg.appendChild(txt);
 			}
-		}
-		eData.preventDefault();
+			eData.preventDefault();
 		return false;
-		
+		}else{
+			//If all req info is supplied save our data! Send the key value (which came from the editData function).
+			//Remember this key value was passed through the editSubmit event listener as a property.
+			storeData(this.key);
+		}
+
 	}
 	//Variable defaults
 	var categoryLists = ["--Choose A Category--", "Personal", "Work", "Misc"],
