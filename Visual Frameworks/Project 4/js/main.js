@@ -107,6 +107,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeli.appendChild(makeSubList);
+			getImage(obj.cats[1], makeSubList);
 			for(var n in obj){
 				var makeSubli = document.createElement('li');
 				makeSubList.appendChild(makeSubli);
@@ -119,13 +120,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	}
 	//Get the image for the right category
-	/*function getImage(catName, makeSubList){
+	function getImage(catName, makeSubList){
 		var imageLi = document.createElement('li');
 		makeSubList.appendChild(imageLi);
 		var newImg = document.createElement('img');
 		var setSrc = newImg.setAttribute("src", "images/"+ catName + ".png");
 		imageLi.appendChild(newImg);
-	}*/
+	}
 	
 	// Auto Populate Local Storage
 	function autoFillData(){
@@ -140,6 +141,10 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Make Item Links
 	//Create the edit and delete links for each storred item when displayed
 	function makeItemLinks(key, linksLi){
+		//add line break
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
 		//add edit single item link
 		var editLink = document.createElement('a');
 		editLink.href = "#";
@@ -161,6 +166,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
+		
+		//add horizontal line
+		var hrTag = document.createElement('hr');
+		linksLi.appendChild(hrTag)
 	}
 	
 	function editItem(){

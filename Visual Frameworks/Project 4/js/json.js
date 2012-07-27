@@ -1,6 +1,6 @@
 var json = {
 	"task1": {
-		"cats": ["Category List:", "Work"],
+		"cats": ["Category List:", "Misc"],
 		"taskname": ["My Task Name:", "Test 1"],
 		"date": ["Date:", "2012-07-12"],
 		"time": ["Time:", "12:00pm"],
